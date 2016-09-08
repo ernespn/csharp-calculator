@@ -17,6 +17,7 @@ namespace CalculatorService
                 Console.WriteLine("Your application is running on " + uri);
                 Console.WriteLine("Press any [Enter] to close the host.");
                 Console.ReadLine();
+                Console.WriteLine("Bye bye.");
             }
         }
     }
