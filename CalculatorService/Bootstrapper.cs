@@ -2,13 +2,15 @@
 using Nancy.TinyIoc;
 
 using Newtonsoft.Json;
-
-public class Bootstrapper : DefaultNancyBootstrapper
+namespace CalculatorServices
 {
-    protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+    public class Bootstrapper : DefaultNancyBootstrapper
     {
-        base.ConfigureApplicationContainer(container);
+        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        {
+            base.ConfigureApplicationContainer(container);
 
-        container.Register<JsonSerializer, CustomJsonSerializer>();
+            container.Register<JsonSerializer, CustomJsonSerializer>();
+        }
     }
 }
