@@ -2,4 +2,4 @@ deployment:
   dockerhub:
     branch: master
     commands:
-      - $DOCKER_HUB_TRIGGER_CS
+      - curl -H "Content-Type: application/json" --data '{"docker_tag": "master"}' -X POST $DOCKER_HUB_TRIGGER_CS
