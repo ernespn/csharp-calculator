@@ -22,7 +22,14 @@ namespace TodoService.Repositories.Mongo
 
         public void AddOrUpdateTodo(Todo todo)
         {
-            throw new NotImplementedException();
+            InsertOneAsync(todo);
+        }
+
+        private async void InsertOneAsync(Todo todo)
+        {
+            var document = todo.ToBsonDocument();
+            var collection = _database.GetCollection<BsonDocument>("todos");
+            await collection.InsertOneAsync(document);
         }
 
         public bool DeleteTodo(string id)
@@ -49,8 +56,7 @@ namespace TodoService.Repositories.Mongo
                     var batch = cursor.Current;
                     foreach (var document in batch)
                     {
-                        // process document
-                        count++;
+                        todos.Add(BsonSerializer.Deserialize<Todo>(document));
                     }
                 }
             }
