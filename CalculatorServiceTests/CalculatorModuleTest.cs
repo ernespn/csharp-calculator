@@ -54,5 +54,35 @@ namespace CalculatorServiceTests
             Calculation value = result.Body.DeserializeJson<Calculation>();
             Assert.Equal("C# services", value.from);
         }
+
+        [Fact]
+        public void Should_return_404_when_parameters_wrong()
+        {
+            // Given
+            var browser = new Browser(with => with.Module<CalculatorModule>());
+
+            // When
+            var result = browser.Get("/add/3/ass", with => {
+                with.HttpRequest();
+            });
+
+            // Then
+            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+        }
+
+        [Fact]
+        public void Should_return_404_when_route_not_find()
+        {
+            // Given
+            var browser = new Browser(with => with.Module<CalculatorModule>());
+
+            // When
+            var result = browser.Get("/", with => {
+                with.HttpRequest();
+            });
+
+            // Then
+            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+        }
     }
 }
