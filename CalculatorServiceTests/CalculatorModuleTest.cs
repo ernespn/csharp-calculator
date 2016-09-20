@@ -19,6 +19,7 @@ namespace CalculatorServiceTests
                 with.HttpRequest();
             });
 
+
             // Then
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         }
@@ -63,21 +64,6 @@ namespace CalculatorServiceTests
 
             // When
             var result = browser.Get("/add/3/ass", with => {
-                with.HttpRequest();
-            });
-
-            // Then
-            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
-        }
-
-        [Fact]
-        public void Should_return_404_when_route_not_find()
-        {
-            // Given
-            var browser = new Browser(with => with.Module<CalculatorModule>());
-
-            // When
-            var result = browser.Get("/", with => {
                 with.HttpRequest();
             });
 
