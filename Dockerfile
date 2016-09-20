@@ -2,4 +2,4 @@ FROM mono:onbuild
 
 EXPOSE 8085
 
-CMD ["mono", "./CalculatorService.exe"]
+CMD ["mono", "./ApiService.exe"]

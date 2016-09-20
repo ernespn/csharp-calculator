@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Todo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ITodoRepository.cs" />
+    <Compile Include="Repositories\TodoMongoRepository.cs" />
     <Compile Include="TodoModule.cs" />
   </ItemGroup>
   <ItemGroup>
