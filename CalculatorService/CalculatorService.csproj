@@ -62,6 +62,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="CalculatorModule.cs" />
     <Compile Include="CustomJsonSerializer.cs" />
+    <Compile Include="Models\Calculation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

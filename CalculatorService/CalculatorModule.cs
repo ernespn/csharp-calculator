@@ -1,4 +1,5 @@
 ﻿using Nancy;
+using CalculatorServices.Models;
 
 namespace CalculatorServices
 {
@@ -11,7 +12,7 @@ namespace CalculatorServices
                 int x = parameters.x;
                 int y = parameters.y;
 
-                return Response.AsJson(new { result = x + y, from = "C# services" });
+                return Response.AsJson(new Calculation { result = x + y, from = "C# services" });
             };
         }
     }
