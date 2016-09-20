@@ -85,6 +85,10 @@
       <Project>{21da1a34-1679-47df-b420-f0d9d4eab593}</Project>
       <Name>CalculatorService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TodoService.Repository.Mongo\TodoService.Repository.Mongo.csproj">
+      <Project>{e5ecdb51-dbe8-4b2e-87be-faab50d78091}</Project>
+      <Name>TodoService.Repository.Mongo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TodoService\TodoService.csproj">
       <Project>{dc9aaccc-cd47-4954-8060-dd7f5054d285}</Project>
       <Name>TodoService</Name>

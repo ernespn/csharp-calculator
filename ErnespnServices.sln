@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoServiceTests", "TodoSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoService", "TodoService\TodoService.csproj", "{DC9AACCC-CD47-4954-8060-DD7F5054D285}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoService.Repository.Mongo", "TodoService.Repository.Mongo\TodoService.Repository.Mongo.csproj", "{E5ECDB51-DBE8-4B2E-87BE-FAAB50D78091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DC9AACCC-CD47-4954-8060-DD7F5054D285}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC9AACCC-CD47-4954-8060-DD7F5054D285}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC9AACCC-CD47-4954-8060-DD7F5054D285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5ECDB51-DBE8-4B2E-87BE-FAAB50D78091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5ECDB51-DBE8-4B2E-87BE-FAAB50D78091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5ECDB51-DBE8-4B2E-87BE-FAAB50D78091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5ECDB51-DBE8-4B2E-87BE-FAAB50D78091}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,7 +14,8 @@ namespace TodoService
 
             Get["/todo"] = _ =>
             {
-                return Response.AsJson(_todoRepository.GetAll().ToList().Take(10));
+                var todos = _todoRepository.GetAll();
+                return Response.AsJson(todos.ToList().Take(10));
             };
         }
 
