@@ -1,8 +1,8 @@
 ﻿using Nancy;
 using Nancy.TinyIoc;
-
 using Newtonsoft.Json;
-namespace CalculatorServices
+
+namespace ApiService
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
