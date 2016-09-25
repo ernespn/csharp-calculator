@@ -1,5 +1,4 @@
 ﻿using Nancy;
-using Nancy.Extensions;
 using Nancy.ModelBinding;
 using System.Linq;
 using TodoService.Models;
@@ -17,16 +16,26 @@ namespace TodoService
 
             Get["/todo"] = _ =>
             {
-                var todos = _todoRepository.GetAll();
-                return Response.AsJson(todos.ToList().Take(10));
+                return Response.AsJson(_todoRepository.GetAll().ToList());
             };
 
             Post["/todo"] = _ =>
             {
                 var x = this.Bind<Todo>();
                 _todoRepository.AddOrUpdateTodo(x);
-                var todos = _todoRepository.GetAll();
-                return Response.AsJson(todos.ToList().Take(10));
+                return Response.AsJson(_todoRepository.GetAll().ToList().Take(10));
+            };
+
+            Delete["/todo/{id}"] = parameters =>
+            {
+                _todoRepository.DeleteTodo(parameters.id);
+                return Response.AsJson(_todoRepository.GetAll().ToList().Take(10));
+            };
+
+            Get["/todo/{id}"] = parameters =>
+            {
+                Todo todo = _todoRepository.GetById(parameters.id);
+                return Response.AsJson(todo);
             };
         }
 

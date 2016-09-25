@@ -32,9 +32,16 @@ namespace TodoService.Repositories.Mongo
             await collection.InsertOneAsync(document);
         }
 
-        public bool DeleteTodo(string id)
+        public void DeleteTodo(string id)
         {
-            throw new NotImplementedException();
+            DeleteTodoAsync(id);
+        }
+
+        private async void DeleteTodoAsync(string id)
+        {
+            var collection = _database.GetCollection<BsonDocument>(_collection);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
+            await collection.DeleteManyAsync(filter);
         }
 
         public IEnumerable<Todo> GetAll()
@@ -66,7 +73,18 @@ namespace TodoService.Repositories.Mongo
 
         public Todo GetById(string id)
         {
-            throw new NotImplementedException();
+            Task<Todo> todo = GetByIdAsync(id);
+            return todo.Result;
+        }
+
+        private async Task<Todo> GetByIdAsync(string id)
+        {
+            var collection = _database.GetCollection<BsonDocument>(_collection);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
+            var document = await collection.Find(filter).ToListAsync();
+            return BsonSerializer.Deserialize<Todo>(document[0]);
+                
         }
     }
 }
+    

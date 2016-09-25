@@ -12,7 +12,7 @@ namespace TodoService.Repositories
         IEnumerable<Todo> GetAll();
         Todo GetById(string id);
         void AddOrUpdateTodo(Todo todo);
-        bool DeleteTodo(string id);
+        void DeleteTodo(string id);
                 
     }
 }
