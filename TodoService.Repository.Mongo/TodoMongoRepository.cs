@@ -16,7 +16,7 @@ namespace TodoService.Repositories.Mongo
 
         public TodoMongoRepository()
         {
-            _client = new MongoClient("mongodb://192.168.99.100:27017");
+            _client = new MongoClient("mongodb://mongodb:27017");
             _database = _client.GetDatabase("services");
         }
 
