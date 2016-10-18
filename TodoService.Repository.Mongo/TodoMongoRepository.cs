@@ -55,7 +55,6 @@ namespace TodoService.Repositories.Mongo
             var collection = _database.GetCollection<BsonDocument>(_collection);
             var filter = new BsonDocument();
             var todos = new List<Todo>();
-            var count = 0;
             using (var cursor = await collection.FindAsync(filter))
             {
                 while (await cursor.MoveNextAsync())

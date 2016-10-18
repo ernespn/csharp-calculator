@@ -1,14 +1,16 @@
 ﻿using Nancy.Testing;
-using Xunit;
 using Nancy;
 using CalculatorServices;
 using CalculatorServices.Models;
 
+using NUnit.Framework;
+
 namespace CalculatorServiceTests
 {
-    public class CalculatorModuleTest
+    [TestFixture]
+    public class CalculatorModuleTests
     {
-        [Fact]
+        [Test]
         public void Should_return_status_ok_when_route_exist()
         {
             // Given
@@ -21,10 +23,10 @@ namespace CalculatorServiceTests
 
 
             // Then
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
-        [Fact]
+        [Test]
         public void Should_return_7_when_parameter_3_and_4_are_passed()
         {
             // Given
@@ -37,10 +39,10 @@ namespace CalculatorServiceTests
 
             // Then
             Calculation value = result.Body.DeserializeJson<Calculation>();
-            Assert.Equal(7, value.result);
+            Assert.AreEqual(7, value.result);
         }
 
-        [Fact]
+        [Test]
         public void Should_return_csharp_in_the_from_section()
         {
             // Given
@@ -53,10 +55,10 @@ namespace CalculatorServiceTests
 
             // Then
             Calculation value = result.Body.DeserializeJson<Calculation>();
-            Assert.Equal("C# services", value.from);
+            Assert.AreEqual("C# services", value.from);
         }
 
-        [Fact]
+        [Test]
         public void Should_return_404_when_parameters_wrong()
         {
             // Given
@@ -68,7 +70,7 @@ namespace CalculatorServiceTests
             });
 
             // Then
-            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
         }
     }
 }

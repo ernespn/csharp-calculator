@@ -1,6 +1,8 @@
 ﻿using Nancy;
 using Nancy.Testing;
-using Xunit;
+
+using NUnit.Framework;
+
 using TodoService;
 using Moq;
 using TodoService.Repositories;
@@ -10,9 +12,10 @@ using System.Linq;
 
 namespace TodoServiceTests
 {
+    [TestFixture]
     public class TodoServiceTests
     {
-        [Fact]
+        [Test]
         public void Should_return_status_ok_when_route_exist()
         {
             // Given
@@ -27,11 +30,11 @@ namespace TodoServiceTests
             var result = browser.Get("/todo/", with => { with.HttpRequest(); });
 
             // Then
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
             
         }
 
-        [Fact]
+        [Test]
         public void Should_return_list_todos()
         {
             // Given
@@ -50,13 +53,13 @@ namespace TodoServiceTests
             IEnumerable<Todo> list = result.Body.DeserializeJson<IEnumerable<Todo>>();
 
             // Then
-            Assert.Equal(expectedList.Count, list.ToList().Count);
+            Assert.AreEqual(expectedList.Count, list.ToList().Count);
             mockTodoRepository.Verify(x => x.GetAll(), Times.Once);
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 
         }
 
-        [Fact]
+        [Test]
         public void Should_Save_Todos()
         {
             // Given
@@ -75,14 +78,14 @@ namespace TodoServiceTests
             IEnumerable<Todo> list = result.Body.DeserializeJson<IEnumerable<Todo>>();
 
             // Then
-            Assert.Equal(expectedList.Count, list.ToList().Count);
+            Assert.AreEqual(expectedList.Count, list.ToList().Count);
             mockTodoRepository.Verify(x => x.GetAll(), Times.Once);
             mockTodoRepository.Verify(x => x.AddOrUpdateTodo(It.IsAny<Todo>()), Times.Once);
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 
         }
 
-        [Fact]
+        [Test]
         public void Should_Delete_Todo()
         {
             // Given
@@ -103,11 +106,11 @@ namespace TodoServiceTests
             // Then
             mockTodoRepository.Verify(x => x.GetAll(), Times.Once);
             mockTodoRepository.Verify(x => x.DeleteTodo("33"), Times.Once);
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 
         }
 
-        [Fact]
+        [Test]
         public void Should_Return_Todo_By_Id()
         {
             // Given
@@ -127,7 +130,7 @@ namespace TodoServiceTests
 
             // Then
             mockTodoRepository.Verify(x => x.GetById(todo.id), Times.Once);
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 
         }
     }

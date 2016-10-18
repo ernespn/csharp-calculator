@@ -1,12 +1,14 @@
 ﻿using Nancy;
 using Nancy.Testing;
-using Xunit;
+
+using NUnit.Framework;
 
 namespace ApiServiceTests
 {
+    [TestFixture]
     public class ApiServiceTests
     {
-        [Fact]
+        [Test]
         public void Should_return_404_when_route_not_find()
         {
             // Given
@@ -18,7 +20,7 @@ namespace ApiServiceTests
             });
 
             // Then
-            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
         }
     }
 }
