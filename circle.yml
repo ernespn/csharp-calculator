@@ -30,3 +30,5 @@ test:
     override:
         - xbuild /p:Configuration=Debug ErnespnServices.sln
         - nunit-console ApiServiceTests/bin/Debug/ApiServiceTests.dll
+        - nunit-console CalculatorServiceTests/bin/Debug/CalculatorServiceTests.dll
+        - nunit-console TodoServiceTests/bin/Debug/TodoServiceTests.dll
