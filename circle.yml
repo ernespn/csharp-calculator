@@ -29,4 +29,6 @@ dependencies:
 test:
     override:
         - xbuild
-        - nunit-console ErnespnServices.sln
+        - nunit-console ApiServiceTests/obj/Debug/ApiServiceTests.dll
+        - nunit-console CalculatorServiceTests/obj/Debug/CalculatorServiceTests.dll
+        - nunit-console TodoServiceTests/obj/Debug/TodoServiceTests.dll
